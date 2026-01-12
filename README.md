@@ -6,6 +6,6 @@ It is still in early development so don't expect much here.
 
 Info about how to use the library is in `docs`.
 
-The library for reading is available in `reading`. It also comes with a small test program.
+The library for reading is available in `library`. It also comes with a small test program.
 
 Python scripts for generating struct reading functions will be available in `generators`.
