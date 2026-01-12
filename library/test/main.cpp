@@ -3,23 +3,19 @@
 
 #include "ReStructer/Reading.hpp"
 #include "ReStructer/Writing.hpp"
+#include "ReStructer/SerializeMacro.hpp"
 
-struct TestStruct
+namespace TestNamespace
 {
-    uint32_t a;
-};
-
-template<>
-void ReStructer::ReadValue(TestStruct& v, std::ifstream& stream)
-{
-    ReadBigEndian(v.a, stream);
+    struct TestStruct
+    {
+        uint32_t a;
+    };
 }
-
-template<>
-void ReStructer::WriteValue(const TestStruct& v, std::ofstream& stream)
-{
-    WriteBigEndian(v.a, stream);
-}
+ReStructer_SerializeProfile(TestNamespace::TestStruct,
+    (BigEndian, a)
+)
+using namespace TestNamespace;
 
 int main()
 {
