@@ -1,5 +1,5 @@
 # ReStructer - Lightweight Serialization
-ReStructer is a lightweight reflection library/toolkit made primarily for
+ReStructer is a lightweight serialization library/toolkit made primarily for
 [TeaPacket](https://github.com/MysticTortoise/TeaPacketModular).
 
 It is still in early development so don't expect much here.
