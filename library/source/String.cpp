@@ -2,7 +2,7 @@
 #include "ReStructer/Writing.hpp"
 
 template<>
-void ReStructer::ReadValue(std::string& v, std::ifstream& stream)
+void ReStructer::ReadValue(std::string& v, std::istream& stream)
 {
     char lastVal;
     while (true)
@@ -19,7 +19,7 @@ void ReStructer::ReadValue(std::string& v, std::ifstream& stream)
 constexpr static char NullChar = '\0';
 
 template<>
-void ReStructer::WriteValue(const std::string& v, std::ofstream& stream)
+void ReStructer::WriteValue(const std::string& v, std::ostream& stream)
 {
     for (size_t i = 0; i < v.size(); ++i)
     {

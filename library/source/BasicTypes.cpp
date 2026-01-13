@@ -11,13 +11,13 @@ using namespace ReStructer;
 
 #define BasicEntry(Type) \
 template<> \
-void ReStructer::ReadValue<Type>(Type& v, std::ifstream& stream) \
+void ReStructer::ReadValue<Type>(Type& v, std::istream& stream) \
 { \
     stream.read(reinterpret_cast<char*>(&v), sizeof(Type)); \
 } \
 \
 template<> \
-void ReStructer::ReadBigEndian<Type>(Type& v, std::ifstream& stream) \
+void ReStructer::ReadBigEndian<Type>(Type& v, std::istream& stream) \
 { \
     stream.read(reinterpret_cast<char*>(&v), sizeof(Type)); \
     if constexpr (sizeof(Type) >= 1 && !Private::IsBigEndian()) { \
@@ -25,7 +25,7 @@ void ReStructer::ReadBigEndian<Type>(Type& v, std::ifstream& stream) \
     } \
 } \
 template<> \
-void ReStructer::ReadLittleEndian<Type>(Type& v, std::ifstream& stream) \
+void ReStructer::ReadLittleEndian<Type>(Type& v, std::istream& stream) \
 { \
     stream.read(reinterpret_cast<char*>(&v), sizeof(Type)); \
     if constexpr (sizeof(Type) >= 1 && Private::IsBigEndian()) { \
@@ -33,13 +33,13 @@ void ReStructer::ReadLittleEndian<Type>(Type& v, std::ifstream& stream) \
     } \
 } \
 template<> \
-void ReStructer::WriteValue<Type>(const Type& v, std::ofstream& stream) \
+void ReStructer::WriteValue<Type>(const Type& v, std::ostream& stream) \
 { \
     stream.write(reinterpret_cast<const char*>(&v), sizeof(Type)); \
 } \
 \
 template<> \
-void ReStructer::WriteBigEndian<Type>(const Type& v, std::ofstream& stream) \
+void ReStructer::WriteBigEndian<Type>(const Type& v, std::ostream& stream) \
 { \
     if constexpr (sizeof(Type) >= 1 && !Private::IsBigEndian()) { \
         const Type v2 = Private::Swap(v);\
@@ -50,7 +50,7 @@ void ReStructer::WriteBigEndian<Type>(const Type& v, std::ofstream& stream) \
     }\
 } \
 template<> \
-void ReStructer::WriteLittleEndian<Type>(const Type& v, std::ofstream& stream) \
+void ReStructer::WriteLittleEndian<Type>(const Type& v, std::ostream& stream) \
 { \
     if constexpr (sizeof(Type) >= 1 && Private::IsBigEndian()) { \
         const Type v2 = Private::Swap(v);\

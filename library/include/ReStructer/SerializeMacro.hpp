@@ -11,12 +11,12 @@
 
 #define ReStructer_SerializeProfile(StructName, ...) \
 template<> \
-void ReStructer::ReadValue(StructName& v, std::ifstream& stream) \
+void ReStructer::ReadValue(StructName& v, std::istream& stream) \
 { \
 MAP_UD(ReStructer_ReadEntryL, StructName, __VA_ARGS__) \
 } \
 template<> \
-void ReStructer::WriteValue(const StructName& v, std::ofstream& stream) \
+void ReStructer::WriteValue(const StructName& v, std::ostream& stream) \
 { \
 MAP_UD(ReStructer_WriteEntryL, StructName, __VA_ARGS__) \
 }
